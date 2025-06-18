@@ -1,0 +1,12 @@
+CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 python main_baseline.py \
+        --train_dir "/home/sdb1/datasets/imagenet/train" \
+        --val_dir "/home/sdb1/datasets/imagenet/val" \
+        --log_dir "logs/sup_cifar" \
+        --arch swin \
+        --dist-url 'tcp://127.0.0.1:10001' \
+        --dist-backend 'nccl' \
+        --world-size 1 \
+        --rank 0 \
+        --batch-size 256 \
+        --lr 0.001 \
+        --wd 1e-1

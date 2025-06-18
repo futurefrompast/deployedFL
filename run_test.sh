@@ -1,0 +1,13 @@
+CUDA_VISIBLE_DEVICES=0,1,2,3 python main_baseline.py \
+        --train_dir "/home/sdb1/datasets/imagenet/train" \
+        --val_dir "/home/sdb1/datasets/imagenet/val" \
+        --log_dir "logs/test" \
+        --arch swin \
+        --dist-url 'tcp://127.0.0.1:10001' \
+        --dist-backend 'nccl' \
+        --world-size 1 \
+        --rank 0 \
+        --batch-size 64 \
+        --print-freq 50 \
+        --evaluate \
+        --resume 'pretrained/stage1_imagenet.pth.tar'
