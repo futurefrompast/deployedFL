@@ -1,0 +1,17 @@
+CUDA_VISIBLE_DEVICES=0,1,2,3,4 python fedavg.py \
+         -data_root /home/sdb1/datasets/ \
+         -data_name imagenet \
+         -net swin \
+         -lr_server 1e-5 \
+         -lr_client 1e-4 \
+         -b 64 \
+         -b_client 8 \
+         -round_iter 5 \
+         -alpha_server 0.99 \
+         -alpha_client 0.99 \
+         -level 5 \
+         -wandb_name "fed_baseline_50%_lrs1e-5_lrc1e-4_bs64_bc8_full_as099_ac099" \
+         -corrupt_name_train weather/frost weather/snow weather/fog weather/brightness \
+         -corrupt_name_test weather/frost weather/snow weather/fog weather/brightness \
+         -mode 'full' \
+         -weights '../pretrained/stage1_imagenet.pth.tar'
